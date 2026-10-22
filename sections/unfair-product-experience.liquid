@@ -98,7 +98,8 @@
 <div class="uf-benefit"><span>✳</span>{{ product.metafields.custom.benefit_3.value | default: 'Feel-good care' | escape }}</div>
 </div>
 <div class="uf-divider"></div>
-{% form 'product', product, id: 'uf-product-form-' | append: section.id %}
+{% assign unfair_form_id = 'uf-product-form-' | append: section.id %}
+{% form 'product', product, id: unfair_form_id %}
 <input type="hidden" name="id" value="{{ current_variant.id }}" data-variant-id>
 <div class="uf-label">Quantity</div>
 <div class="uf-buyrow"><div class="uf-qty"><button type="button" data-minus aria-label="Decrease quantity">−</button><input type="number" min="1" name="quantity" value="1" aria-label="Quantity"><button type="button" data-plus aria-label="Increase quantity">+</button></div><button class="uf-atc" type="submit" data-add {% unless current_variant.available %}disabled{% endunless %}>{% if current_variant.available %}ADD TO BAG{% else %}SOLD OUT{% endif %}</button></div>
@@ -128,7 +129,6 @@ function update(){const choices=[...root.querySelectorAll('[data-option-index]')
 root.querySelectorAll('[data-option-index]').forEach(group=>group.querySelectorAll('button').forEach(button=>button.addEventListener('click',()=>{group.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));update();})));
 root.querySelector('[data-minus]').addEventListener('click',()=>{const q=form.querySelector('[name=quantity]');q.value=Math.max(1,(parseInt(q.value,10)||1)-1);});
 root.querySelector('[data-plus]').addEventListener('click',()=>{const q=form.querySelector('[name=quantity]');q.value=(parseInt(q.value,10)||1)+1;});
-root.querySelectorAll('[data-thumb]').forEach(()=>{});
 root.querySelectorAll('[data-slide]').forEach(btn=>btn.addEventListener('click',()=>{const stage=root.querySelector('[data-stage]');stage.scrollTo({left:stage.clientWidth*Number(btn.dataset.slide),behavior:'smooth'});root.querySelectorAll('[data-slide]').forEach(b=>b.setAttribute('aria-current',String(b===btn)));}));
 root.querySelector('[data-mobile-add]').addEventListener('click',()=>add.click());
 now.addEventListener('click',()=>{if(!selected?.available)return;const q=Math.max(1,parseInt(form.querySelector('[name=quantity]').value,10)||1);location.href='/cart/'+selected.id+':'+q+'?checkout';});
