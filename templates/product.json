@@ -1,11 +1,6 @@
 /*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
+ * Product template: dedicated UN-FAIR PDP.
+ * Legacy Custom Liquid retained but disabled for safe rollback.
  */
 {
   "sections": {
@@ -115,10 +110,16 @@
         "color_scheme": "",
         "padding_top": 0,
         "padding_bottom": 0
-      }
+      },
+      "disabled": true
+    },
+    "unfair_product_experience": {
+      "type": "unfair-product-experience",
+      "settings": {}
     }
   },
   "order": [
+    "unfair_product_experience",
     "main",
     "related-products",
     "custom_liquid_HnNwAN"
